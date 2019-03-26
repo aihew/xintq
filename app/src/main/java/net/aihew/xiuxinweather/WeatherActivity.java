@@ -1,5 +1,6 @@
 package net.aihew.xiuxinweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -23,6 +24,7 @@ import com.bumptech.glide.Glide;
 
 import net.aihew.xiuxinweather.gson.Forecast;
 import net.aihew.xiuxinweather.gson.Weather;
+import net.aihew.xiuxinweather.service.AutoUpdateService;
 import net.aihew.xiuxinweather.util.HttpUtil;
 import net.aihew.xiuxinweather.util.Utility;
 
@@ -223,5 +225,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
